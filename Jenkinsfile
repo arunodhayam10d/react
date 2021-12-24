@@ -27,7 +27,7 @@ pipeline{
 			steps {
                 
                 sh 'docker run -d --name react_app -p 3002:3000 arun/react_app:latest '
-                sh '${BUILD_STATUS}'
+                sh 'echo ${BUILD_STATUS}'
                 
 			}
 		}
