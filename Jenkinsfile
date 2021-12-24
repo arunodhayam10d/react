@@ -27,6 +27,8 @@ pipeline{
 			steps {
                 sh 'docker tag arun/react_app:latest 26011998/jenkins:latest'
 				sh 'docker push 26011998/jenkins:latest'
+                sh 'docker.build registry + ":$BUILD_NUMBER"'
+                echo $BUILD_NUMBER
 			}
 		}
 	}
