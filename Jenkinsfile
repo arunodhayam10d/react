@@ -25,8 +25,8 @@ pipeline{
 		stage('Push') {
 
 			steps {
-                sh 'docker tag arun/react_app:latest 26011998/jenkins:$BUILD_NUMBER'
-				sh 'docker push 26011998/jenkins:$BUILD_NUMBER'
+                sh 'docker tag arun/react_app:latest 26011998/jenkins:new-$BUILD_NUMBER'
+				sh 'docker push 26011998/jenkins:new-$BUILD_NUMBER'
                 
 			}
 		}
