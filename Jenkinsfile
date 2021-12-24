@@ -22,19 +22,21 @@ pipeline{
 			}
 		}
 
-		stage('Push') {
+		stage('Local_Deploy') {
 
 			steps {
-                sh 'docker tag arun/react_app:latest 26011998/jenkins:new-$BUILD_NUMBER'
-				sh 'docker push 26011998/jenkins:new-$BUILD_NUMBER'
+                
+                sh 'docker run -d --name react_app -p 3002:3000 arun/react_app:latest '
+                sh '${BUILD_STATUS}'
                 
 			}
 		}
-        stage('Local_Deploy') {
+        stage('Push') {
 
             steps {
-                sh 'docker run -d --name react_app -p 3002:3000 arun/react_app:latest '
-                
+                sh 'docker tag arun/react_app:latest 26011998/jenkins:new-$BUILD_NUMBER'
+				sh 'docker push 26011998/jenkins:new-$BUILD_NUMBER'
+
             }
         }
 	}
