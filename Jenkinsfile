@@ -25,7 +25,8 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push arun/react_app:latest'
+                
+				sh 'docker push 26011998/jenkins:latest'
 			}
 		}
 	}
