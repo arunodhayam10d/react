@@ -19,6 +19,7 @@ pipeline{
 
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $CONTAINER_NAME'
 			}
 		}
 
@@ -27,7 +28,7 @@ pipeline{
 			steps {
                 
                 sh 'docker run -d --name react_app -p 3002:3000 arun/react_app:latest '
-                sh 'echo ${BUILD_STATUS}'
+                sh 'echo $BUILD_STATUS'
                 
 			}
 		}
@@ -36,6 +37,7 @@ pipeline{
             steps {
                 sh 'docker tag arun/react_app:latest 26011998/jenkins:new-$BUILD_NUMBER'
 				sh 'docker push 26011998/jenkins:new-$BUILD_NUMBER'
+                sh 'echo $BUILD_STATUS'
 
             }
         }
