@@ -24,6 +24,6 @@ jobs:
 
     steps:
 
-    - uses:
+    - uses: actions/checkout@v2
     - name: Push the docker image to docker hub        
       
