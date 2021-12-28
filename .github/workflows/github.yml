@@ -25,5 +25,16 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
-    - name: Push the docker image to docker hub        
+    - name: Dockerlogin  
+      env :
+          DOCKER_USERNAME=${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD=${{secrets.DOCKER_PASSWORD}}
+          REPO_NAME=${{secrets.REPO_NAME}}
+
+      run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - name: push the image
+      run: |
+          docker push ${{secrets.DOCKER_USERNAME}}/$REPO_NAME     
+            
       
