@@ -21,7 +21,7 @@ jobs:
     - name: Build the Docker image  
       run:  |
             docker build -it react:$NUM .
-            sleep 5
+            sleep 10
             docker run -d --name=react_app -p 3000:3000 react:$NUM 
 
   stage:
