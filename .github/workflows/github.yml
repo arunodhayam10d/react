@@ -20,7 +20,7 @@ jobs:
            echo $NUM   
     - name: Build the Docker image  
       run:  |
-            cd ../..
+            
             docker build -t react:1.0 .
             
   stage:
