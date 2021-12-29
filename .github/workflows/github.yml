@@ -20,7 +20,8 @@ jobs:
       run:  docker build . --file Dockerfile --tag my-image-name:$NUMBER
             docker run -d -p 3000:3000 my-image-name:$NUMBER
 
-  stage: 
+  stage:
+    runs-on: ubuntu-latest 
     steps:
     - uses: actions/checkout@v2
     - name: Dockerlogin  
