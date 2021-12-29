@@ -19,8 +19,8 @@ jobs:
            NUM=${{ github.run_number }}
            echo $NUM   
     - name: Build the Docker image  
-      run:  docker build -t my-image-name:$NUM .
-            docker run -d -p 3000:3000 my-image-name:$NUM 
+      run:  docker build -it react:$NUM .
+            docker run -d --name=react_app -p 3000:3000 react:$NUM 
 
   stage:
     runs-on: ubuntu-latest 
