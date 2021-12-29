@@ -13,9 +13,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Output Run ID
-      env: 
-            NUMBER=${{ github.run_number }}
-      run:  echo $NUMBER
+      run: echo ${{ github.run_id }}
+    - name: Output Run Number
+      run: echo ${{ github.run_number }} 
     - name: Build the Docker image  
       run:  docker build . --file Dockerfile --tag my-image-name:$NUMBER
             docker run -d -p 3000:3000 my-image-name:$NUMBER
@@ -25,10 +25,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Dockerlogin  
-      env :
-            DOCKER_USERNAME=${{secrets.DOCKER_USERNAME}}
-            DOCKER_PASSWORD=${{secrets.DOCKER_PASSWORD}}
-            REPO_NAME=${{secrets.REPO_NAME}}
       run: |
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: push the image
