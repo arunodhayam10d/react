@@ -20,7 +20,7 @@ jobs:
            echo $NUM   
     - name: Build the Docker image  
       run:  |
-            docker build -it react:$NUM .
+            docker build -t react:$NUM .
             sleep 10
             docker run -d --name=react_app -p 3000:3000 react:$NUM 
 
