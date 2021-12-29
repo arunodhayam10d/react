@@ -15,10 +15,12 @@ jobs:
     - name: Output Run ID
       run: echo ${{ github.run_id }}
     - name: Output Run Number
-      run: echo ${{ github.run_number }} 
+      run: |
+           NUM=${{ github.run_number }}
+           echo $NUM   
     - name: Build the Docker image  
-      run:  docker build . --file Dockerfile --tag my-image-name:$NUMBER
-            docker run -d -p 3000:3000 my-image-name:$NUMBER
+      run:  docker build . --file Dockerfile --tag my-image-name:$NUM 
+            docker run -d -p 3000:3000 my-image-name:$NUM 
 
   stage:
     runs-on: ubuntu-latest 
